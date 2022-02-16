@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     public static final int CAMERA_ACTION_CODE=1;
-    ImageView imageView;
+    ImageView gridView;
     FloatingActionButton button;
 
     @Override
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = findViewById(R.id.imageView);
+//        imageView = findViewById(R.id.gridView);
         button = findViewById(R.id.button);
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
@@ -36,22 +36,25 @@ public class MainActivity extends AppCompatActivity {
             }, CAMERA_ACTION_CODE);
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, CAMERA_ACTION_CODE);
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, CAMERA_ACTION_CODE);
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        // process picture here
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==CAMERA_ACTION_CODE && resultCode==RESULT_OK && data!=null) {
-            Bundle bundle = data.getExtras();
-            Bitmap finalPhoto = (Bitmap) bundle.get("data");
-            imageView.setImageBitmap(finalPhoto);
-        }
+//        if (requestCode==CAMERA_ACTION_CODE && resultCode==RESULT_OK && data!=null) {
+//            Bundle bundle = data.getExtras();
+//            Bitmap finalPhoto = (Bitmap) bundle.get("data");
+//            imageView.setImageBitmap(finalPhoto);
+//        }
+    }
+
+    public void enterPuzzle(View view) {
+        Intent intent = new Intent(this, ManualEntry.class);
+        startActivity(intent);
     }
 }

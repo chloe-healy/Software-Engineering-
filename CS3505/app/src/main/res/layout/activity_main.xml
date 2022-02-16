@@ -12,15 +12,33 @@ android:layout_height="match_parent">
     android:layout_height="match_parent"
     android:layout_marginTop="56dp">
 
-    <ImageView
-        android:id="@+id/imageView"
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:layout_marginTop="140dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+
+
+    <GridView
+        android:id="@+id/gridView"
         android:layout_width="250dp"
         android:layout_height="250dp"
+
+        android:columnWidth="70dp"
+        android:gravity="center"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+
+
         android:layout_marginTop="140dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button"
@@ -61,7 +79,9 @@ android:layout_height="match_parent">
         android:text="New Puzzle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="enterPuzzle"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

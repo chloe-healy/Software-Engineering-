@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2608695652173913" />
+        <entry key="app/src/main/res/layout/activity_show.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/card_item.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/grid_box.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/griditem.xml" value="0.37182971014492755" />
+        <entry key="app/src/main/res/layout/puzzle_entry.xml" value="0.29485321044921875" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.37182971014492755" />
       </map>
     </option>
   </component>
