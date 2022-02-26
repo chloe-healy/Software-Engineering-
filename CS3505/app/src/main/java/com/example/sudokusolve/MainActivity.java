@@ -13,12 +13,16 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     public static final int CAMERA_ACTION_CODE=1;
     ImageView gridView;
+    TextView textBox;
     FloatingActionButton button;
 
     @Override
@@ -40,6 +44,32 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, CAMERA_ACTION_CODE);
         });
+
+        if (ManualEntry.table!=null) {
+            textBox = findViewById(R.id.text);
+            String grid="-------------------------------------------------------------\n";
+            for (int i=0; i<9; i++) {
+                grid += "  |  ";
+                for (int j=0; j<9; j++) {
+                    grid += ManualEntry.table[i][j].value;
+                    grid += "  |  ";
+                }
+                grid+="\n-------------------------------------------------------------\n";
+            }
+            textBox.setText(grid);
+        } else {
+            textBox = findViewById(R.id.text);
+            String grid="-------------------------------------------------------------\n";
+            for (int i=0; i<9; i++) {
+                grid += "  |  ";
+                for (int j=0; j<9; j++) {
+//                    grid += ManualEntry.table[i][j].value;
+                    grid += "   |   ";
+                }
+                grid+="\n-------------------------------------------------------------\n";
+            }
+            textBox.setText(grid);
+        }
     }
 
     @Override

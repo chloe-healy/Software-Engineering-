@@ -23,22 +23,33 @@ android:layout_height="match_parent">
 <!--        tools:srcCompat="@tools:sample/avatars" />-->
 
 
+    <!--    <GridView-->
+<!--        android:id="@+id/gridView"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="250dp"-->
 
-    <GridView
-        android:id="@+id/gridView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+<!--        android:columnWidth="70dp"-->
+<!--        android:gravity="center"-->
+<!--        android:numColumns="3"-->
+<!--        android:stretchMode="columnWidth"-->
 
-        android:columnWidth="70dp"
+
+<!--        android:layout_marginTop="140dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="296dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="84dp"
         android:gravity="center"
-        android:numColumns="3"
-        android:stretchMode="columnWidth"
-
-
-        android:layout_marginTop="140dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button"
@@ -56,7 +67,7 @@ android:layout_height="match_parent">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="140dp"
         android:text="Next Hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -66,7 +77,7 @@ android:layout_height="match_parent">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="140dp"
         android:text="Solution"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -75,13 +86,13 @@ android:layout_height="match_parent">
         android:id="@+id/new_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
+        android:onClick="enterPuzzle"
         android:text="New Puzzle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="enterPuzzle"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

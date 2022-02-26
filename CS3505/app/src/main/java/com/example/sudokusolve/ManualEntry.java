@@ -14,26 +14,16 @@ import android.widget.TableRow;
 import com.google.android.material.bottomappbar.BottomAppBarTopEdgeTreatment;
 
 public class ManualEntry extends AppCompatActivity{
-    private class Cell {
+    protected class Cell {
         int value;
-//        boolean fixed;
         Button btn;
 
         public Cell(int initValue, Context THIS) {
             value=initValue;
-//            if (value!=0) fixed=true;
             btn = new Button(THIS);
-//            if (fixed) {
-//                btn.setText(String.valueOf((value)));
-//            }
-//            else {
-//                btn.setTextColor(Color.GREEN);
-//            }
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // if value from the start
-//                    if (fixed) return;
                     value++;
                     if (value>9) {
                         value=0;
@@ -46,7 +36,7 @@ public class ManualEntry extends AppCompatActivity{
         }
     }
 
-    Cell[][] table;
+    public static Cell[][] table;
     String input;
     TableLayout tl;
 
