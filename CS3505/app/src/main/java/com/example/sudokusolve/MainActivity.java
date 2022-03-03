@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView gridView;
     TextView textBox;
     FloatingActionButton button;
-
+    int[][] puzzle = new int[9][9];;
+    boolean tableExists = false;
+ 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,31 +47,18 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent, CAMERA_ACTION_CODE);
         });
 
+        textBox = findViewById(R.id.text);
         if (ManualEntry.table!=null) {
-            textBox = findViewById(R.id.text);
-            String grid="-------------------------------------------------------------\n";
-            for (int i=0; i<9; i++) {
-                grid += "  |  ";
-                for (int j=0; j<9; j++) {
-                    grid += ManualEntry.table[i][j].value;
-                    grid += "  |  ";
-                }
-                grid+="\n-------------------------------------------------------------\n";
-            }
-            textBox.setText(grid);
-        } else {
-            textBox = findViewById(R.id.text);
-            String grid="-------------------------------------------------------------\n";
-            for (int i=0; i<9; i++) {
-                grid += "  |  ";
-                for (int j=0; j<9; j++) {
-//                    grid += ManualEntry.table[i][j].value;
-                    grid += "   |   ";
-                }
-                grid+="\n-------------------------------------------------------------\n";
-            }
-            textBox.setText(grid);
+            tableExists = true;
         }
+        if (tableExists) {
+            for (int i=0; i<9; i++) {
+                for (int j=0; j<9; j++) {
+                    puzzle[i][j] = ManualEntry.table[i][j].value;
+                }
+            }
+        }
+        setText();
     }
 
     @Override
@@ -81,6 +70,31 @@ public class MainActivity extends AppCompatActivity {
 //            Bitmap finalPhoto = (Bitmap) bundle.get("data");
 //            imageView.setImageBitmap(finalPhoto);
 //        }
+    }
+
+    protected void setText() {
+        String grid="-------------------------------------------------------------\n";
+        for (int i=0; i<9; i++) {
+            grid += "  |  ";
+            for (int j=0; j<9; j++) {
+                if (tableExists) {
+                    grid += puzzle[i][j];
+                } else {
+                    grid += " ";
+                }
+                grid += "  |  ";
+            }
+            grid+="\n-------------------------------------------------------------\n";
+        }
+        textBox.setText(grid);
+    }
+
+    public void solvePuzzle(View view) {
+        if (ManualEntry.table!=null) {
+            Solver solver = new Solver();
+            solver.solve(puzzle, 0, 0);
+        }
+        setText();
     }
 
     public void enterPuzzle(View view) {
