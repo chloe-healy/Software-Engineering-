@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView gridView;
     TextView textBox;
     FloatingActionButton button;
-    int[][] puzzle = new int[9][9];;
+    int[][] unsolvedPuzzle = new int[9][9];;
+    int[][] solvedPuzzle = new int[9][9];;
     boolean tableExists = false;
+    boolean solved = false;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +50,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         textBox = findViewById(R.id.text);
-        if (ManualEntry.table!=null) {
-            tableExists = true;
-        }
+        if (ManualEntry.table!=null) tableExists = true;
         if (tableExists) {
             for (int i=0; i<9; i++) {
                 for (int j=0; j<9; j++) {
-                    puzzle[i][j] = ManualEntry.table[i][j].value;
+                    unsolvedPuzzle[i][j] = ManualEntry.table[i][j].value;
+                    solvedPuzzle[i][j] = ManualEntry.table[i][j].value;
                 }
             }
         }
-        setText();
+        setText(unsolvedPuzzle);
     }
 
     @Override
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
-    protected void setText() {
+    protected void setText(int[][] puzzle) {
         String grid="-------------------------------------------------------------\n";
         for (int i=0; i<9; i++) {
             grid += "  |  ";
@@ -89,12 +90,30 @@ public class MainActivity extends AppCompatActivity {
         textBox.setText(grid);
     }
 
-    public void solvePuzzle(View view) {
+    public void nextHint(View view) {
+        if (!solved) solvePuzzle();
+        for (int i=0; i<9; i++) {
+            for (int j=0; j<9; j++) {
+                if (unsolvedPuzzle[i][j] == 0) {
+                    unsolvedPuzzle[i][j] = solvedPuzzle[i][j];
+                    setText(unsolvedPuzzle);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void showSolution(View view) {
+        if (!solved) solvePuzzle();
+        setText(solvedPuzzle);
+    }
+
+    public void solvePuzzle() {
         if (ManualEntry.table!=null) {
             Solver solver = new Solver();
-            solver.solve(puzzle, 0, 0);
+            solver.solve(solvedPuzzle, 0, 0);
         }
-        setText();
+        solved = true;
     }
 
     public void enterPuzzle(View view) {
