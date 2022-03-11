@@ -8,27 +8,22 @@ public class Solver {
             return true;
         }
 
-
         if (col == puzzleSize) {
             row++;
             col = 0;
         }
 
-
         if (puzzle[row][col] != 0) {
             return solve(puzzle, row, col + 1);
         }
 
-
         for (int num = 1; num < puzzleSize+1; num++) {
-
             if (validInsertion(puzzle, row, col, num)) {
                 puzzle[row][col] = num;
 
                 if (solve(puzzle, row, col + 1)) {
                     return true;
                 }
-
             }
 
             puzzle[row][col] = 0;
@@ -63,23 +58,4 @@ public class Solver {
 
         return true;
     }
-
-//    static void printSudoku(int[][] puzzle) {
-//        int puzzleSize = puzzle.length;
-//        int space = 3;
-//        if (puzzleSize > 9) {
-//            space++;
-//        }
-//        if (puzzleSize > 99) {
-//            space++;
-//        }
-//        String format ="%-"+space+"d";
-//
-//        for (int currentRow = 0; currentRow < puzzleSize; currentRow++) {
-//            for (int currentCol = 0; currentCol < puzzleSize; currentCol++) {
-//                System.out.format(format, puzzle[currentRow][currentCol]);
-//            }
-//            System.out.println();
-//        }
-//    }
 }
