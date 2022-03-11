@@ -20,10 +20,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    public static final int CAMERA_ACTION_CODE=1;
-    ImageView gridView;
+//        public static final int CAMERA_ACTION_CODE=1;
+//    ImageView gridView;
     TextView textBox;
-    FloatingActionButton button;
+//    FloatingActionButton button;
     int[][] unsolvedPuzzle = new int[9][9];;
     int[][] solvedPuzzle = new int[9][9];;
     boolean tableExists = false;
@@ -34,10 +34,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // the commented out code below is for processing the picture, which was not implemented
+        // the commented out code below is for processing/taking the picture, which was not
+        // implemented
 //        imageView = findViewById(R.id.gridView);
 //        button = findViewById(R.id.button);
-
+//
 //        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
 //                != PackageManager.PERMISSION_GRANTED) {
 //            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
