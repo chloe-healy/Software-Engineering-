@@ -34,15 +34,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // the commented out code below is for processing the picture, which was not implemented
 //        imageView = findViewById(R.id.gridView);
 //        button = findViewById(R.id.button);
 
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                    Manifest.permission.CAMERA
-            }, CAMERA_ACTION_CODE);
-        }
+//        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
+//                != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+//                    Manifest.permission.CAMERA
+//            }, CAMERA_ACTION_CODE);
+//        }
 
 //        button.setOnClickListener(v -> {
 //            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -50,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         textBox = findViewById(R.id.text);
+
         if (ManualEntry.table!=null) tableExists = true;
+        // create 2 arrays of the puzzle, one containing the solution and the other unsolved
+        // this enables the user to incrementally view solutions to individual squares.
         if (tableExists) {
             for (int i=0; i<9; i++) {
                 for (int j=0; j<9; j++) {
@@ -59,19 +63,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
         setText(unsolvedPuzzle);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        // process picture here
-        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode==CAMERA_ACTION_CODE && resultCode==RESULT_OK && data!=null) {
-//            Bundle bundle = data.getExtras();
-//            Bitmap finalPhoto = (Bitmap) bundle.get("data");
-//            imageView.setImageBitmap(finalPhoto);
-//        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        // process picture here
+//        super.onActivityResult(requestCode, resultCode, data);
+////        if (requestCode==CAMERA_ACTION_CODE && resultCode==RESULT_OK && data!=null) {
+////            Bundle bundle = data.getExtras();
+////            Bitmap finalPhoto = (Bitmap) bundle.get("data");
+////            imageView.setImageBitmap(finalPhoto);
+////        }
+//    }
 
     protected void setText(int[][] puzzle) {
         String grid="-------------------------------------------------------------\n";

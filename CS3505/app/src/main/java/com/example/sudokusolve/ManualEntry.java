@@ -18,6 +18,7 @@ public class ManualEntry extends AppCompatActivity{
         int value;
         Button btn;
 
+        // Cell stores a button and a text value for the button
         public Cell(int initValue, Context THIS) {
             value=initValue;
             btn = new Button(THIS);
@@ -44,6 +45,8 @@ public class ManualEntry extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         table = new Cell[9][9];
         tl = new TableLayout(this);
+
+        // create a 9x9 grid of Cells
         for (int i=0;i<9;i++) {
             TableRow tr = new TableRow(this);
             for (int j=0;j<9;j++) {
@@ -52,8 +55,12 @@ public class ManualEntry extends AppCompatActivity{
             }
             tl.addView(tr);
         }
+
+        // fit grid to screen
         tl.setShrinkAllColumns(true);
         tl.setStretchAllColumns(true);
+
+        // button to save puzzle and return to original screen
         Button saveBtn = new Button(this);
         saveBtn.setText("Save");
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +70,8 @@ public class ManualEntry extends AppCompatActivity{
             }
         });
         tl.addView(saveBtn);
+
+        // print the grid of Cells to the screen
         setContentView(tl);
     }
 
