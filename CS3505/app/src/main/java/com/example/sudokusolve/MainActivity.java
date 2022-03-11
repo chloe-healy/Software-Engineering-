@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //        imageView = findViewById(R.id.gridView);
-        button = findViewById(R.id.button);
+//        button = findViewById(R.id.button);
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
             }, CAMERA_ACTION_CODE);
         }
 
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, CAMERA_ACTION_CODE);
-        });
+//        button.setOnClickListener(v -> {
+//            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//            startActivityForResult(intent, CAMERA_ACTION_CODE);
+//        });
 
         textBox = findViewById(R.id.text);
         if (ManualEntry.table!=null) tableExists = true;
